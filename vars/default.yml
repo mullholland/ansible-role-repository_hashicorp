@@ -1,0 +1,10 @@
+---
+repository_hashicorp_key_url: "https://apt.releases.hashicorp.com/gpg"
+
+hashicorp_repository_url:
+  RedHat: "https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo"
+  CentOS: "https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo"
+  Rocky: "https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo"
+  AlmaLinux: "https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo"
+  Amazon: "https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo"
+  Fedora: "https://rpm.releases.hashicorp.com/fedora/hashicorp.repo"
