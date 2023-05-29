@@ -1,0 +1,8 @@
+---
+#
+# Ansible managed
+#
+repository:
+  description: Adds the official hashicorp repository to your system.
+  homepage: https://mullholland.net
+  topics: cloud, development, packaging, system, ansible, molecule, tox, playbook
