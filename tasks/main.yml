@@ -1,10 +1,10 @@
 ---
-- name: YUM | Include distribution specific variables
+- name: CentOS/RedHat | Include distribution specific variables
   ansible.builtin.include_vars: "{{ item }}"
   with_first_found:
     - 'default.yml'
 
-- name: APT | Add hashicorp key
+- name: Debian/Ubuntu | Add hashicorp key
   ansible.builtin.apt_key:
     url: "{{ repository_hashicorp_key_url }}"
     state: present
@@ -12,7 +12,7 @@
   when:
     - ansible_os_family == "Debian"
 
-- name: APT | Add hashicorp repository
+- name: Debian/Ubuntu | Add hashicorp repository
   ansible.builtin.apt_repository:
     repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
     state: present
@@ -21,7 +21,7 @@
   when:
     - ansible_os_family == "Debian"
 
-- name: YUM | Add hashicorp repository
+- name: CentOS/RedHat | Add hashicorp repository
   ansible.builtin.get_url:
     url: "{{ hashicorp_repository_url[ansible_distribution] }}"
     dest: /etc/yum.repos.d/hashicorp.repo
