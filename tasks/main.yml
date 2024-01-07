@@ -14,7 +14,7 @@
 
 - name: Debian/Ubuntu | Add hashicorp repository
   ansible.builtin.apt_repository:
-    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+    repo: "deb [arch={{ 'arm64' if ansible_architecture == 'aarch64' else 'amd64' }}] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
     state: present
     filename: hashicorp
   register: repository_hashicorp_status
