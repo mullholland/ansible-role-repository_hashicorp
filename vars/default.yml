@@ -1,5 +1,6 @@
 ---
 repository_hashicorp_key_url: "https://apt.releases.hashicorp.com/gpg"
+repository_hashicorp_keyring: "/etc/apt/keyrings/hashicorp.asc"
 
 hashicorp_repository_url:
   RedHat: "https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo"

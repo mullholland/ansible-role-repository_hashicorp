@@ -4,26 +4,37 @@
   with_first_found:
     - 'default.yml'
 
-- name: Debian/Ubuntu | Add hashicorp key
-  ansible.builtin.apt_key:
-    url: "{{ repository_hashicorp_key_url }}"
-    state: present
-    validate_certs: false
+- name: Debian/Ubuntu | Ensure keyrings directory exists
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
   when:
-    - ansible_os_family == "Debian"
+    - ansible_facts['os_family'] == "Debian"
+
+- name: Debian/Ubuntu | Add hashicorp key
+  ansible.builtin.get_url:
+    url: "{{ repository_hashicorp_key_url }}"
+    dest: "{{ repository_hashicorp_keyring }}"
+    mode: "0644"
+    force: false
+  when:
+    - ansible_facts['os_family'] == "Debian"
 
 - name: Debian/Ubuntu | Add hashicorp repository
   ansible.builtin.apt_repository:
-    repo: "deb [arch=amd64] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main"
+    repo: "deb [signed-by={{ repository_hashicorp_keyring }}] https://apt.releases.hashicorp.com {{ ansible_facts['distribution_release'] }} main"
     state: present
     filename: hashicorp
   register: repository_hashicorp_status
   when:
-    - ansible_os_family == "Debian"
+    - ansible_facts['os_family'] == "Debian"
 
 - name: CentOS/RedHat | Add hashicorp repository
   ansible.builtin.get_url:
-    url: "{{ hashicorp_repository_url[ansible_distribution] }}"
+    url: "{{ hashicorp_repository_url[ansible_facts['distribution']] }}"
     dest: /etc/yum.repos.d/hashicorp.repo
     mode: "0644"
   register: repository_hashicorp_status
@@ -31,4 +42,4 @@
   retries: 5
   delay: 10
   when:
-    - ansible_distribution in [ "RedHat", "CentOS", "Amazon", "Rocky", "AlmaLinux", "Fedora" ]
+    - ansible_facts["distribution"] in [ "RedHat", "CentOS", "Amazon", "Rocky", "AlmaLinux", "Fedora" ]
