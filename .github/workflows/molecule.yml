@@ -40,8 +40,6 @@ jobs:
           - image: "debian"
             tag: "trixie"
           - image: "fedora"
-            tag: "42"
-          - image: "fedora"
             tag: "43"
           - image: "rockylinux"
             tag: "8"

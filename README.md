@@ -37,7 +37,7 @@ This role has been tested on these [container images](https://hub.docker.com/u/m
 |---------|----|
 |[Ubuntu](https://hub.docker.com/r/mullholland/ubuntu)|all|
 |[Debian](https://hub.docker.com/r/mullholland/debian)|all|
-|[Fedora](https://hub.docker.com/r/mullholland/fedora/)|all|
+|[Fedora](https://hub.docker.com/r/mullholland/fedora/)|43|
 |[Rocky](https://hub.docker.com/r/mullholland/rockylinux)|all|
 |[AlmaLinux](https://hub.docker.com/r/mullholland/almalinux)|all|
 |[CentOS](https://hub.docker.com/r/mullholland/centos)|all|

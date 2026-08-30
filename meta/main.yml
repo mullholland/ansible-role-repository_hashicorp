@@ -17,7 +17,8 @@ galaxy_info:
         - all
     - name: Fedora
       versions:
-        - all
+        # HashiCorp's Fedora repo doesn't have packages for 42 yet.
+        - "43"
     - name: Rocky
       versions:
         - all
