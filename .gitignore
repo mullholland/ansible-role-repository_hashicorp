@@ -1,4 +1,5 @@
 .ansible
+.claude
 .molecule
 *.log
 *.swp
@@ -11,3 +12,9 @@ agents.md
 AGENT.md
 Agent.md
 agent.md
+SKILLS.md
+Skills.md
+skills.md
+SKILL.md
+Skill.md
+skill.md
